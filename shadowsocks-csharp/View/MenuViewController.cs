@@ -237,14 +237,14 @@ namespace Shadowsocks.View
                     PACModeItem = CreateMenuItem("PAC", new EventHandler(this.PACModeItem_Click)),
                     globalModeItem = CreateMenuItem("Global", new EventHandler(this.GlobalModeItem_Click)),
                     //new MenuItem("-"),
-                    noModifyItem = CreateMenuItem("No modify system proxy", new EventHandler(this.NoModifyItem_Click))
+                    //noModifyItem = CreateMenuItem("No modify system proxy", new EventHandler(this.NoModifyItem_Click))
                 }),
                 CreateMenuGroup("Proxy rule", new MenuItem[] {
                     ruleBypassLan = CreateMenuItem("Bypass LAN", new EventHandler(this.RuleBypassLanItem_Click)),
                     ruleBypassChina = CreateMenuItem("Bypass LAN && China", new EventHandler(this.RuleBypassChinaItem_Click)),
                     ruleBypassNotChina = CreateMenuItem("Bypass LAN && not China", new EventHandler(this.RuleBypassNotChinaItem_Click)),
-                    ruleUser = CreateMenuItem("User custom", new EventHandler(this.RuleUserItem_Click)),
-                    ruleDisableBypass = CreateMenuItem("Disable bypass", new EventHandler(this.RuleBypassDisableItem_Click)),
+                    //ruleUser = CreateMenuItem("User custom", new EventHandler(this.RuleUserItem_Click)),
+                    //ruleDisableBypass = CreateMenuItem("Disable bypass", new EventHandler(this.RuleBypassDisableItem_Click)),
                     new MenuItem("-"),
                     CreateMenuGroup("更新规则", new MenuItem[] {
                         CreateMenuItem("Update local PAC from Lan IP list", new EventHandler(this.UpdatePACFromLanIPListItem_Click)),
@@ -652,7 +652,7 @@ namespace Shadowsocks.View
 
         private void UpdateSysProxyMode(Configuration config)
         {
-            noModifyItem.Checked = config.sysProxyMode == (int)ProxyMode.NoModify;
+            //noModifyItem.Checked = config.sysProxyMode == (int)ProxyMode.NoModify;
             enableItem.Checked = config.sysProxyMode == (int)ProxyMode.Direct;
             PACModeItem.Checked = config.sysProxyMode == (int)ProxyMode.Pac;
             globalModeItem.Checked = config.sysProxyMode == (int)ProxyMode.Global;
@@ -660,11 +660,11 @@ namespace Shadowsocks.View
 
         private void UpdateProxyRule(Configuration config)
         {
-            ruleDisableBypass.Checked = config.proxyRuleMode == (int)ProxyRuleMode.Disable;
+            //ruleDisableBypass.Checked = config.proxyRuleMode == (int)ProxyRuleMode.Disable;
             ruleBypassLan.Checked = config.proxyRuleMode == (int)ProxyRuleMode.BypassLan;
             ruleBypassChina.Checked = config.proxyRuleMode == (int)ProxyRuleMode.BypassLanAndChina;
             ruleBypassNotChina.Checked = config.proxyRuleMode == (int)ProxyRuleMode.BypassLanAndNotChina;
-            ruleUser.Checked = config.proxyRuleMode == (int)ProxyRuleMode.UserCustom;
+            //ruleUser.Checked = config.proxyRuleMode == (int)ProxyRuleMode.UserCustom;
         }
 
         private void LoadCurrentConfiguration()
@@ -1181,7 +1181,7 @@ namespace Shadowsocks.View
 
         private void CheckNodeUpdateBypassProxy_Click(object sender, EventArgs e)
         {
-            updateSubscribeManager.CreateTask(controller.GetCurrentConfiguration(), updateFreeNodeChecker, -1, false, true);
+            updateSubscribeManager.CreateTask(controller.GetCurrentConfiguration(), /*updateFreeNodeChecker,*/ -1, false, true);
         }
 
         private void ShowLogItem_Click(object sender, EventArgs e)
